@@ -3188,6 +3188,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     <script defer src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <script defer>
+        const subname = "{{ user.username }}"
         const sub = "{{ user.subscription_url }}"
         let fullUrl = `${window.location.origin}{{ user.subscription_url }}`;
         if (sub.startsWith("http")) {
@@ -3195,14 +3196,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         }
 
         function setHrefs() {
-            document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}/v2ray-json`;
-            document.getElementById("ios-v2RayTun").href = `v2raytun://import/${fullUrl}`
-            document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
-            document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
-            document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}`;
-            document.getElementById("android-clashmeta").href = `clash://install-config?url=${fullUrl}`
+            document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}/v2ray-json#${subname}_Sub`;
+            document.getElementById("ios-v2RayTun").href = `v2raytun://import/${fullUrl}#${subname}_Sub`
+            document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=${subname}_Sub`;
+            document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}&name=${subname}_Sub`;
+            document.getElementById("android-clashmeta").href = `clash://install-config?url=${fullUrl}&name=${subname}_Sub`
 
 
             // Android Apps
@@ -3487,104 +3488,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         const dataChartColor = dataUsage < 40 ? "bg-green-500" : dataUsage < 80 ? "bg-yellow-600" : "bg-red-500";
         const resetInterval = "{{ user.data_limit_reset_strategy.value }}";
         let expireDateVar = expireDateInit.includes("∞") ? "∞" : localStorage.getItem("lang") == "fa" ? new Date(expireDateInit).toLocaleString("fa-IR-u-nu-latn").replace(",", " ") : expireDateInit;
-        let appsJson = {
-            IOS: {
-                Streisand: {
-                    url: [
-                        {
-                            name: "IOS 14+",
-                            url: "https://apps.apple.com/us/app/streisand/id6450534064",
-                            best: true,
-                        },
-                    ],
-                    tutorial: "",
-                },
-                FoXray: {
-                    url: [
-                        {
-                            name: "IOS 16+",
-                            url: "https://apps.apple.com/us/app/foxray/id6448898396",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-                v2RayTun: {
-                    url: [
-                        {
-                            name: "IOS 16+",
-                            url: "https://apps.apple.com/ru/app/v2raytun/id6476628951",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-                Shadowrocket: {
-                    url: [
-                        {
-                            name: "$3.99",
-                            url: "https://apps.apple.com/ca/app/shadowrocket/id932747118",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-            },
-            Android: {
-                v2rayNG: {
-                    url: [
-                        {
-                            name: "GooglePlay",
-                            url: "https://play.google.com/store/apps/details?id=com.v2ray.ang",
-                            best: true,
-                        },
-                        {
-                            name: "Github",
-                            url: "https://github.com/2dust/v2rayNG/releases/download/1.9.23/v2rayNG_1.9.23_universal.apk",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-                NekoBox: {
-                    url: [
-                        {
-                            name: "Arm64",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-arm64-v8a.apk",
-                            best: false,
-                        },
-                        {
-                            name: "Armeabi",
-                            url: "https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.2.9/NB4A-1.2.9-armeabi-v7a.apk",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-            },
-            Windows: {
-                nekoray: {
-                    url: [
-                        {
-                            name: "",
-                            url: "https://github.com/MatsuriDayo/nekoray/releases/download/4.0-beta4/nekoray-4.0-beta4-2024-10-09-windows64.zip",
-                            best: true,
-                        },
-                    ],
-                    tutorial: "",
-                },
-                v2rayN: {
-                    url: [
-                        {
-                            name: "",
-                            url: "https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-SelfContained-With-Core.7z",
-                            best: false,
-                        },
-                    ],
-                    tutorial: "",
-                },
-            },
-        };
         let langJson = {
             en: {
                 active: "Active",
@@ -3614,11 +3517,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 proxy: "Proxy",
                 tutorial: "Tutorial",
                 download: "Download",
+                downloadGP: "Google Play",
+                downloadAPK: "Download APK",
                 telchannel: "Telegram Channel",
                 telsupport: "Telegram Support",
                 telProxy: "Telegram Proxy",
                 v2rayNG: "Android - Download v2rayNG",
                 NekoBox: "Android - Download NekoBox",
+                NekoBoxGPAlert: "The version on Google Play is a fake, please do not download it.",
                 SingBox: "Android - Download SingBox",
                 Streisand: "iOS - Download Streisand",
                 FoXray: "iOS - Downaload FoXray",
@@ -3696,11 +3602,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 proxy: "پروکسی",
                 tutorial: "آموزش",
                 download: "دانلود",
+                downloadGP: "Google Play",
+                downloadAPK: "دانلود APK",
                 telchannel: "کانال تلگرام",
                 telProxy: "پروکسی تلگرام",
                 telsupport: "پشتیبانی تلگرام",
                 v2rayNG: "اندروید - دانلود برنامه v2rayNG",
                 NekoBox: "اندروید - دانلود برنامه NekoBox",
+                NekoBoxGPAlert: "Google Play 上的版本是冒充的，请勿下载。",
                 SingBox: "اندروید - دانلود برنامه Sing-Box",
                 Streisand: "آی او اِس - دانلود برنامه Streisand",
                 FoXray: "آی او اِس - دانلود برنامه FoXray",
@@ -3778,11 +3687,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 proxy: "прокси",
                 tutorial: "руководство",
                 download: "Скачать",
+                downloadGP: "Google Play",
+                downloadAPK: "Скачать APK",
                 telchannel: "Телеграм-канал",
                 telsupport: "Поддержка Telegram",
                 telProxy: "Прокси-сервер Telegram",
                 v2rayNG: "Android - Download v2rayNG",
                 NekoBox: "Android - Download NekoBox",
+                NekoBoxGPAlert: "Версия в Google Play — подделка, пожалуйста, не скачивайте ее.",
                 SingBox: "Android - Download SingBox",
                 Streisand: "iOS - Download Streisand",
                 FoXray: "iOS - Downaload FoXray",
@@ -5287,6 +5199,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
+                                                                    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang"
+                                                                        class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/smafogdu.json"
+                                                                            trigger="loop" delay="1500" stroke="bold"
+                                                                            colors="primary:#fff" state="in-reveal">
+                                                                        </lord-icon>
+                                                                        <span x-text="$t('downloadGP')"></span>
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/smafogdu.json"
+                                                                            trigger="loop" delay="1500" stroke="bold"
+                                                                            colors="primary:#fff" state="in-reveal">
+                                                                        </lord-icon>
+                                                                    </a>
                                                                     <a href="https://github.com/2dust/v2rayNG/releases/download/1.9.23/v2rayNG_1.9.23_universal.apk"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
@@ -5294,7 +5220,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             trigger="loop" delay="1500"
                                                                             colors="primary:#fff" state="intro">
                                                                         </lord-icon>
-                                                                        <span x-text="$t('download')"></span>
+                                                                        <span x-text="$t('downloadAPK')"></span>
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
                                                                             trigger="loop" delay="1500"
@@ -5726,6 +5652,22 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForDownload')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
+                                                                        <a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa"
+                                                                            class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/smafogdu.json"
+                                                                                trigger="loop" delay="1500"
+                                                                                stroke="bold" colors="primary:#fff"
+                                                                                state="in-reveal">
+                                                                            </lord-icon>
+                                                                            <span x-text="$t('downloadGP')"></span>
+                                                                            <lord-icon class="w-8 h-8"
+                                                                                src="https://cdn.lordicon.com/smafogdu.json"
+                                                                                trigger="loop" delay="1500"
+                                                                                stroke="bold" colors="primary:#fff"
+                                                                                state="in-reveal">
+                                                                            </lord-icon>
+                                                                        </a>
                                                                         <a href="https://github.com/SagerNet/sing-box/releases/download/v1.10.3/SFA-1.10.3-universal.apk"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
@@ -5733,7 +5675,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                                 trigger="loop" delay="1500"
                                                                                 colors="primary:#fff" state="intro">
                                                                             </lord-icon>
-                                                                            <span x-text="$t('download')"></span>
+                                                                            <span x-text="$t('downloadAPK')"></span>
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
                                                                                 trigger="loop" delay="1500"
@@ -5830,14 +5772,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForDownload')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <a href="hhttps://github.com/MetaCubeX/ClashMetaForAndroid/releases/download/v2.11.2/cmfa-2.11.2-meta-universal-release.apk"
+                                                                        <a href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases/download/v2.11.2/cmfa-2.11.2-meta-universal-release.apk"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
                                                                                 trigger="loop" delay="1500"
                                                                                 colors="primary:#fff" state="intro">
                                                                             </lord-icon>
-                                                                            <span x-text="$t('download')"></span>
+                                                                            <span x-text="$t('downloadAPK')"></span>
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
                                                                                 trigger="loop" delay="1500"
@@ -5928,10 +5870,13 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
                                                                         </h3>
                                                                     </div>
+                                                                    <p x-text="$t('NekoBoxGPAlert')"
+                                                                        class="text-sn mb-4 font-bold text-white lg:text-base">
+                                                                    </p>
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.3.2/NB4A-1.3.2-arm64-v8a.apk"
+                                                                    <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/download/1.3.4/NB4A-1.3.4-arm64-v8a.apk"
                                                                         class=" flex mb-4 items-center gap-x-4 w-full
                                                                     bg-gray-800 shadow-md px-3 py-2 rounded-3xl
                                                                     justify-between">
@@ -5940,7 +5885,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             trigger="loop" delay="1500"
                                                                             colors="primary:#fff" state="intro">
                                                                         </lord-icon>
-                                                                        <span x-text="$t('download')"></span>
+                                                                        <span x-text="$t('downloadAPK')"></span>
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
                                                                             trigger="loop" delay="1500"
@@ -6257,7 +6202,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0-beta4/nekoray-4.0-beta4-2024-10-09-windows64.zip"
+                                                                    <a href="https://github.com/MatsuriDayo/nekoray/releases/download/4.0.1/nekoray-4.0.1-2024-12-12-windows64.zip"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
