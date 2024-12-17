@@ -3188,6 +3188,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     <script defer src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <script defer>
+        const subname = "{{ user.username }}"
         const sub = "{{ user.subscription_url }}"
         let fullUrl = `${window.location.origin}{{ user.subscription_url }}`;
         if (sub.startsWith("http")) {
@@ -3195,14 +3196,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         }
 
         function setHrefs() {
-            document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}/v2ray-json`;
-            document.getElementById("ios-v2RayTun").href = `v2raytun://import/${fullUrl}`
-            document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}`;
-            document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#Sub`;
-            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=Sub`;
-            document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}`;
-            document.getElementById("android-clashmeta").href = `clash://install-config?url=${fullUrl}`
+            document.getElementById("ios-streisand").href = `streisand://import/${fullUrl}/v2ray-json#${subname}_Sub`;
+            document.getElementById("ios-v2RayTun").href = `v2raytun://import/${fullUrl}#${subname}_Sub`
+            document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=${subname}_Sub`;
+            document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}&name=${subname}_Sub`;
+            document.getElementById("android-clashmeta").href = `clash://install-config?url=${fullUrl}&name=${subname}_Sub`
 
 
             // Android Apps
