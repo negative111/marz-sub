@@ -59,6 +59,7 @@ update_or_add "SINGBOX_SUBSCRIPTION_TEMPLATE" "singbox/default.json" "$env_file"
 update_or_add "CLASH_SUBSCRIPTION_TEMPLATE" "clash/default.yml" "$env_file"
 update_or_add "CLASH_SETTINGS_TEMPLATE" "clash/settings.yml" "$env_file"
 update_or_add "V2RAY_SUBSCRIPTION_TEMPLATE" "v2ray/default.json" "$env_file"
+update_or_add "SUB_SUPPORT_URL" "$tg_escaped_link" "$env_file"
 
 echo "Обновление файла .env выполнено."
 
