@@ -12,34 +12,79 @@ for dir in "${dirs[@]}"; do
   fi
 done
 
+# Запрос пользовательской ссылки
+read -p "Введите вашу Telegram ссылку, которая будет расположена на странице подписки (например, https://t.me/yourID): " tg_escaped_link
+
 # Загрузка шаблона подписки
 while true; do
     echo "Выберите шаблон для скачивания:"
     echo "1) marz-sub fork by legiz (https://github.com/cortez24rus/marz-sub)"
     echo "2) marzbanify-template fork by legiz (https://github.com/legiz-ru/marzbanify-template)"
-    read -p "Введите номер шаблона (1 или 2): " choice
+    echo "3) marzban-sub-page by streletskiy (https://github.com/streletskiy/marzban-sub-page)"
+    echo "4) your web sub template https link"
+    read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
         shablonurl="https://github.com/cortez24rus/marz-sub/raw/main/index.html"
+        wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
+        sed -i "s#https://t.me/yourID#$tg_escaped_link#g" "$base_dir/subscription/index.html"
         break
     elif [ "$choice" -eq 2 ]; then
         shablonurl="https://github.com/legiz-ru/marzbanify-template/raw/main/index.html"
+        wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
+        sed -i "s#https://t.me/yourID#$tg_escaped_link#g" "$base_dir/subscription/index.html"
         break
+    elif [ "$choice" -eq 3 ]; then
+        shablonurl="https://github.com/streletskiy/marzban-sub-page/raw/main/index.html"
+        wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
+        sleep 1
+        sed -i -e "s|https://t.me/gozargah_marzban|$tg_escaped_link|g" -e "s|https://github.com/Gozargah/Marzban#donation|$tg_escaped_link|g" "$base_dir/subscription/index.html"
+        break
+    elif [ "$choice" -eq 4 ]; then
+        read -p "Введите URL для загрузки: " custom_url
+        if [[ "$custom_url" =~ ^https?:// ]]; then
+            shablonurl="$custom_url"
+            wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
+            break
+        else
+            echo "Неверный URL. Попробуйте снова."
+        fi
     else
         echo "Неверный выбор. Попробуйте снова."
     fi
 done
-wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
 
 # Загрузка шаблона подписки для клиентов xray
-wget -O "$base_dir/v2ray/default.json" "https://github.com/cortez24rus/marz-sub/raw/main/v2ray/default.json" || echo "Ошибка загрузки default.json"
+while true; do
+    echo "Выберите шаблон xray для скачивания:"
+    echo "1) xray client template by legiz"
+    echo "2) your web xray template https link"
+    read -p "Введите номер шаблона (1 или 2): " choice
+
+    if [ "$choice" -eq 1 ]; then
+        xrayurl="https://github.com/cortez24rus/marz-sub/raw/main/v2ray/default.json"
+        break
+    elif [ "$choice" -eq 2 ]; then
+        read -p "Введите URL для загрузки: " custom_url
+        if [[ "$custom_url" =~ ^https?:// ]]; then
+            xrayurl="$custom_url"
+            break
+        else
+            echo "Неверный URL. Попробуйте снова."
+        fi
+    else
+        echo "Неверный выбор. Попробуйте снова."
+    fi
+done
+wget -O "$base_dir/v2ray/default.json" "$xrayurl" || echo "Ошибка загрузки шаблона xray"
 
 # Загрузка шаблона подписки для клиентов mihomo (clash meta)
 while true; do
     echo "Выберите шаблон clash meta для скачивания:"
     echo "1) ru-bundle by legiz (https://github.com/legiz-ru/marz-sub)"
     echo "2) template by Skrepysh (https://github.com/Skrepysh/tools/)"
-    read -p "Введите номер шаблона (1 или 2): " choice
+    echo "3) your template https link"
+    read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
         mihomourl="https://github.com/cortez24rus/marz-sub/raw/main/clash/default.yml"
@@ -47,6 +92,14 @@ while true; do
     elif [ "$choice" -eq 2 ]; then
         mihomourl="https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/clash-sub.yml"
         break
+    elif [ "$choice" -eq 3 ]; then
+        read -p "Введите URL для загрузки: " custom_url
+        if [[ "$custom_url" =~ ^https?:// ]]; then
+            mihomourl="$custom_url"
+            break
+        else
+            echo "Неверный URL. Попробуйте снова."
+        fi
     else
         echo "Неверный выбор. Попробуйте снова."
     fi
@@ -59,7 +112,8 @@ while true; do
     echo "Выберите шаблон sing-box для скачивания:"
     echo "1) Secret-Sing-Box template by BLUEBL0B"
     echo "2) template by Skrepysh (https://github.com/Skrepysh/tools/)"
-    read -p "Введите номер шаблона (1 или 2): " choice
+    echo "3) your template https link"
+    read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
         wget -O "$base_dir/singbox/default.json" "https://github.com/BLUEBL0B/Secret-Sing-Box/raw/main/Config-Examples-WS/Client-VLESS-WS.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
@@ -106,38 +160,39 @@ jq --arg domain "$DOMAIN" --arg server_ip "$SERVER_IP" '
     elif [ "$choice" -eq 2 ]; then
         wget -O "$base_dir/singbox/default.json" "https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/sing-sub.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
         break
+    elif [ "$choice" -eq 3 ]; then
+        read -p "Введите URL для загрузки: " custom_url
+        if [[ "$custom_url" =~ ^https?:// ]]; then
+            sburl="$custom_url"
+            wget -O "$base_dir/singbox/default.json" "$sburl" || echo "Ошибка загрузки клиентског шаблона sing-box"
+            break
+        else
+            echo "Неверный URL. Попробуйте снова."
+        fi
     else
         echo "Неверный выбор. Попробуйте снова."
     fi
 done
 
-
-# Запрос пользовательской ссылки
-read -p "Введите вашу Telegram ссылку, которая будет расположена на странице подписки (например, https://t.me/yourID): " tg_user_link
-
-# Экранирование специальных символов для использования в sed
-tg_escaped_link=$(echo "$tg_user_link" | sed 's/[&/\]/\\&/g')
-
-# Замена ссылки в файле index.html
-# Используем '#' в качестве разделителя для sed
-sed -i "s#https://t.me/yourID#$tg_escaped_link#g" "$base_dir/subscription/index.html"
-
-echo "Ссылка успешно обновлена в index.html"
-
 # Обновление или добавление настроек в .env файл
 env_file="/opt/marzban/.env"
 
-# Обновление или добавление настроек в .env файл
 update_or_add() {
-local key="$1"
-local value="$2"
-local file="$3"
+    local key="$1"
+    local value="$2"
+    local file="$3"
 
-# Удаляем все возможные варианты строк с ключом (активные, закомментированные, с пробелами)
-sed -i "/^\s#\s$key\s=\s.$/d" "$file"
+    # Используем awk для удаления всех предыдущих записей с этим ключом, включая закомментированные
+    awk -v key="$key" -v value="$value" '
+    # Удаляем строки, которые полностью совпадают с ключом (включая закомментированные)
+    $1 != key && !(NF > 1 && $1 == "#" && $2 == key) {print}
+    
+    # Добавляем новую строку в конец файла
+    END {print key " = \"" value "\""}
+    ' "$file" > "$file.tmp"
 
-# Добавляем новую строку в конец файла
-echo "$key = \"$value\"" >> "$file"
+    # Замена оригинального файла
+    mv "$file.tmp" "$file"
 }
 
 
@@ -151,8 +206,6 @@ update_or_add "V2RAY_SUBSCRIPTION_TEMPLATE" "v2ray/default.json" "$env_file"
 update_or_add "SUB_SUPPORT_URL" "$tg_escaped_link" "$env_file"
 
 echo "Обновление файла .env выполнено."
-
-
 
 echo "Скрипт выполнен успешно."
 echo "Не забудь перезапустить Marzban."

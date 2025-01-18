@@ -3912,6 +3912,70 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             });
         })
     </script>
+  <script>
+    async function getLatestReleaseName(url) {
+      if (!url || typeof url !== 'string') {
+        throw new Error('A valid URL must be provided.');
+      }
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        const latest = await response.json();
+
+        if ((!latest || !latest.tag_name) && (!latest || !latest.name)) {
+          throw new Error('The response does not contain the expected data.');
+        }
+
+        return latest.name || latest.tag_name;
+      } catch (error) {
+        console.error('Error fetching the latest release name:', error);
+        throw error;
+      }
+    }
+
+    const singbox_api = 'https://api.github.com/repos/SagerNet/sing-box/releases/latest';
+    const v2rayng_api = 'https://api.github.com/repos/2dust/v2rayNG/releases/latest';
+    const cmfa_api = 'https://api.github.com/repos/MetaCubeX/ClashMetaForAndroid/releases/latest';
+    const v2rayNwin64_api = 'https://api.github.com/repos/2dust/v2rayN/releases/latest';
+    const flclashwin64_api = 'https://api.github.com/repos/chen08209/FlClash/releases/latest';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const sfaName = await getLatestReleaseName(singbox_api);
+        const sfa = document.getElementById('SFA');
+        sfa.href = `https://github.com/SagerNet/sing-box/releases/download/v${sfaName}/SFA-${sfaName}-universal.apk`;
+        const sb_win64 = document.getElementById('sb_win64');
+        sb_win64.href = `https://github.com/SagerNet/sing-box/releases/download/v${sfaName}/sing-box-${sfaName}-windows-amd64.zip`;
+
+        const flclashwin64Name = await getLatestReleaseName(flclashwin64_api);
+        const flclashwin64 = document.getElementById('flclashwin64');
+        let flclash_version = flclashwin64Name.substring(1);
+        flclashwin64.href = `https://github.com/chen08209/FlClash/releases/download/${flclashwin64Name}/FlClash-${flclash_version}-windows-amd64-setup.exe`;
+
+        const cmfaName = await getLatestReleaseName(cmfa_api);
+        const cmfa = document.getElementById('cmfa');
+        let cmfa_version = cmfaName.substring(1);
+        cmfa.href = `https://github.com/MetaCubeX/ClashMetaForAndroid/releases/download/${cmfaName}/cmfa-${cmfa_version}-meta-universal-release.apk`;
+
+        const v2rayngName = await getLatestReleaseName(v2rayng_api);
+        const v2rayngv8a = document.getElementById('v2rayNGv8a');
+        v2rayngv8a.href = `https://github.com/2dust/v2rayNG/releases/download/${v2rayngName}/v2rayNG_${v2rayngName}_universal.apk`;
+
+        const v2rayNwin64Name = await getLatestReleaseName(v2rayNwin64_api);
+        const v2rayNwin64 = document.getElementById('v2rayNwin64');
+        v2rayNwin64.href = `https://github.com/2dust/v2rayN/releases/download/${v2rayNwin64Name}/v2rayN-windows-64-SelfContained-With-Core.zip`;
+
+
+      } catch (error) {
+        console.error('Failed to update link:', error);
+      }
+    });
+  </script>
 
 </head>
 
@@ -4605,6 +4669,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
+                                                                    <div
+                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor"
+                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                            clip-rule="evenodd" />
+                                                                    </svg>
+
+
+                                                                </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5405,7 +5482,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             colors="primary:#fff" state="in-reveal">
                                                                         </lord-icon>
                                                                     </a>
-                                                                    <a href="https://github.com/2dust/v2rayNG/releases/download/1.9.23/v2rayNG_1.9.23_universal.apk"
+                                                                    <a id="v2rayNGv8a" href="#"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -5811,6 +5888,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
+                                                                    <div
+                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor"
+                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                            clip-rule="evenodd" />
+                                                                    </svg>
+
+
+                                                                </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5860,7 +5950,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                                 state="in-reveal">
                                                                             </lord-icon>
                                                                         </a>
-                                                                        <a href="https://github.com/SagerNet/sing-box/releases/download/v1.10.3/SFA-1.10.3-universal.apk"
+                                                                        <a id="SFA" href="#"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
@@ -5931,6 +6021,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addClashMeta')">
                                                                     </span>
+                                                                    <div
+                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor"
+                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                            clip-rule="evenodd" />
+                                                                    </svg>
+
+
+                                                                </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -5964,7 +6067,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForDownload')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <a href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases/download/v2.11.2/cmfa-2.11.2-meta-universal-release.apk"
+                                                                        <a id="cmfa" href="#"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
@@ -6356,7 +6459,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/2dust/v2rayN/releases/download/7.2.3/v2rayN-windows-64-SelfContained-With-Core.7z"
+                                                                    <a id="v2rayNwin64" href="#"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -6395,6 +6498,20 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     </svg>
                                                                     <span x-text="$t('addMihomo')">
                                                                     </span>
+                                                                    <div
+                                                                            class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                viewBox="0 0 24 24" fill="currentColor"
+                                                                                class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                                    clip-rule="evenodd" />
+                                                                            </svg>
+
+
+                                                                        </div>
+                                                                    
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -6427,7 +6544,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v1.7.7/Clash.Verge_1.7.7_x64-setup.exe"
+                                                                    <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.0.3/Clash.Verge_2.0.3_x64-setup.exe"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -6455,7 +6572,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                             colors="primary:#fff" state="intro">
                                                                         </lord-icon>
                                                                     </a>
-                                                                    <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.70/FlClash-0.8.70-windows-amd64-setup.exe"
+                                                                    <a id="flclashwin64" href="#"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -6869,7 +6986,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <p x-text="$t('clickForDownload')"
                                                                             class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                         </p>
-                                                                        <a href="https://github.com/SagerNet/sing-box/releases/download/v1.10.3/sing-box-1.10.3-windows-amd64.zip"
+                                                                        <a id="sb_win64" href="#"
                                                                             class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                             <lord-icon class="w-8 h-8"
                                                                                 src="https://cdn.lordicon.com/albqovim.json"
