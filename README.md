@@ -8,7 +8,7 @@ This template use in [marz-reverse-proxy install script](https://github.com/cort
 
 # Table of Contents
 - [Attributes](#Attributes)
-- [marz-sub.sh](#marz-sub.sh)
+- [marz-sub.sh](#marz-subsh)
 - [Installation Steps](#Install-Steps)
 - [Default Language](#Default-Language)
 - [Personalization](#Personalization)
