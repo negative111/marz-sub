@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/cortez24rus/marzban-sub" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/cortez24rus/marz-sub/raw/main/PreviewTemplate.png" title="Marzba-Sub"/>
+    <img src="PreviewTemplate.png" title="Marzba-Sub"/>
   </a>
 </p>
 
