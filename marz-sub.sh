@@ -13,7 +13,7 @@ for dir in "${dirs[@]}"; do
 done
 
 # Запрос пользовательской ссылки
-read -p "Введите вашу Telegram ссылку, которая будет расположена на странице подписки (например, https://t.me/yourID): " tg_escaped_link
+read -p "Введите вашу Telegram ссылку, которая будет расположена на странице подписки (например, https://t.me/yourID/): " tg_escaped_link
 
 # Загрузка шаблона подписки
 while true; do
