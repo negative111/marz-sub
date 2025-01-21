@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/cortez24rus/marzban-sub" target="_blank" rel="noopener noreferrer">
-    <img src="https://github.com/cortez24rus/marz-sub/raw/main/PreviewTemplate.png" title="Marzba-Sub"/>
+    <img src="PreviewTemplate.png" title="Marzba-Sub"/>
   </a>
 </p>
 
@@ -8,6 +8,7 @@ This template use in [marz-reverse-proxy install script](https://github.com/cort
 
 # Table of Contents
 - [Attributes](#Attributes)
+- [marz-sub.sh](#marz-subsh)
 - [Installation Steps](#Install-Steps)
 - [Default Language](#Default-Language)
 - [Personalization](#Personalization)
@@ -22,8 +23,24 @@ A simple html template to better display user information
 - Three languages (Russian, English, Persian)
 - Sub fantasy page with beautiful color and glaze
 - Receive the configs with the copy icon at the bottom of the page
-- sing-box client config based on [secret-sing-box](https://github.com/BLUEBL0B/Secret-Sing-Box/) (relevant for Russia)
-- mihomo (Clash Meta) client config based on [example config with proxify only ru-bundle rule-set](https://github.com/legiz-ru/mihomo-rule-sets/) (relevant for Russia)(if you need use another rule-sets you can uncommented or add new rules in /clash/default.yml)
+
+# marz-sub.sh
+- marz-sub.sh include this web templates:
+  - [fork marz-sub](https://github.com/cortez24rus/marz-sub/)
+  - [marzbanify-template fork by legiz](https://github.com/legiz-ru/marzbanify-template)
+  - [marzban-sub-page by streletskiy](https://github.com/streletskiy/marzban-sub-page)
+  - your link template
+- sing-box client config based on:
+  - [secret-sing-box](https://github.com/BLUEBL0B/Secret-Sing-Box/) (relevant for Russia)
+  - [Skrepysh](https://github.com/Skrepysh/tools/blob/main/marzban-subscription-templates/sing-sub.json)
+  - your link template
+- mihomo (Clash Meta) client config based on:
+  - [example config with proxify only ru-bundle rule-set](https://github.com/legiz-ru/mihomo-rule-sets/) (relevant for Russia)(if you need use another rule-sets you can uncommented or add new rules in /clash/default.yml)
+  - [Skrepysh](https://github.com/Skrepysh/tools/blob/main/marzban-subscription-templates/clash-sub.yml)
+  - your link template
+- xray config:
+  - by legiz
+  - your link template
 # Installation Steps
 1. Run script
 ```sh
