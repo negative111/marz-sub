@@ -116,7 +116,7 @@ while true; do
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
-        wget -O "$base_dir/singbox/default.json" "https://github.com/BLUEBL0B/Secret-Sing-Box/raw/main/Config-Examples-WS/Client-VLESS-WS.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
+        wget -O "$base_dir/singbox/default.json" "https://raw.githubusercontent.com/cortez24rus/marz-sub/refs/heads/main/templates/Client-VLESS-WS.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
         # Получение переменных DOMAIN и SERVER-IP
         sleep 1
         DOMAIN=$(grep "XRAY_SUBSCRIPTION_URL_PREFIX" /opt/marzban/.env | cut -d '"' -f 2 | sed 's|https://||')
