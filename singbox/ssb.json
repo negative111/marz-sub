@@ -138,27 +138,16 @@
       "tag": "direct"
     },
     {
-      "type": "vless",
+      "type": "selector",
       "tag": "proxy",
-      "server": "DOMAIN",
-      "server_port": 443,
-      "uuid": "VLESS-UUID",
-      "tls": {
-        "enabled": true,
-        "server_name": "DOMAIN",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "randomized"
-        }
-      },
-      "multiplex": {
-        "enabled": true,
-        "padding": true
-      },
-      "transport": {
-        "type": "ws",
-        "path": "/VLESS-PATH"
-      }
+      "outbounds": null
+    },
+    {
+      "type": "urltest",
+      "tag": "Fastest",
+      "outbounds": null,
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "15m0s"
     }
   ],
   "route": {
