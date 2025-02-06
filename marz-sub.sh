@@ -116,7 +116,7 @@ while true; do
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
-        wget -O "$base_dir/singbox/default.json" "https://raw.githubusercontent.com/cortez24rus/marz-sub/refs/heads/main/templates/Client-VLESS-WS.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
+        wget -O "$base_dir/singbox/default.json" "https://github.com/cortez24rus/marz-sub/raw/main/singbox/ssb.json" || echo "Ошибка загрузки ssb.json"
         # Получение переменных DOMAIN и SERVER-IP
         sleep 1
         DOMAIN=$(grep "XRAY_SUBSCRIPTION_URL_PREFIX" /opt/marzban/.env | cut -d '"' -f 2 | sed 's|https://||')
@@ -128,37 +128,11 @@ jq --arg domain "$DOMAIN" --arg server_ip "$SERVER_IP" '
   .dns.servers[0].client_subnet = $server_ip |
   (.dns.rules[] | select(.domain_suffix? and (.domain_suffix | length > 0)) | .domain_suffix[4]) = $domain |
   (.route.rules[] | select(.domain_suffix? and (.domain_suffix | length > 0)) | .domain_suffix[4]) = $domain |
-  (.route.rules[] | select(.ip_cidr? and (.ip_cidr | length > 0)) | .ip_cidr[0]) = $server_ip |
-  .outbounds = [
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    },
-    {
-      "type": "selector",
-      "tag": "proxy",
-      "outbounds": null
-    },
-    {
-      "type": "urltest",
-      "tag": "Fastest",
-      "outbounds": null,
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "15m0s"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
-    }
-  ]
+  (.route.rules[] | select(.ip_cidr? and (.ip_cidr | length > 0)) | .ip_cidr[0]) = $server_ip
 ' "$base_dir/singbox/default.json" > "$base_dir/singbox/temp.json" && mv "$base_dir/singbox/temp.json" "$base_dir/singbox/default.json"
         break
     elif [ "$choice" -eq 2 ]; then
-        wget -O "$base_dir/singbox/default.json" "https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/sing-sub.json" || echo "Ошибка загрузки Client-VLESS-WS.json"
+        wget -O "$base_dir/singbox/default.json" "https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/sing-sub.json" || echo "Ошибка загрузки sing-sub.json"
         break
     elif [ "$choice" -eq 3 ]; then
         read -p "Введите URL для загрузки: " custom_url
