@@ -58,13 +58,17 @@ done
 while true; do
     echo "Выберите шаблон xray для скачивания:"
     echo "1) xray client template by legiz"
-    echo "2) your web xray template https link"
+    echo "2) ru-bundle by legiz"
+    echo "3) your web xray template https link"
     read -p "Введите номер шаблона (1 или 2): " choice
 
     if [ "$choice" -eq 1 ]; then
         xrayurl="https://github.com/cortez24rus/marz-sub/raw/main/v2ray/default.json"
         break
     elif [ "$choice" -eq 2 ]; then
+        xrayurl="https://github.com/legiz-ru/mihomo-rule-sets/raw/main/other/marzban-v2ray-ru-bundle.json"
+        break
+    elif [ "$choice" -eq 3 ]; then
         read -p "Введите URL для загрузки: " custom_url
         if [[ "$custom_url" =~ ^https?:// ]]; then
             xrayurl="$custom_url"
@@ -83,7 +87,8 @@ while true; do
     echo "Выберите шаблон clash meta для скачивания:"
     echo "1) ru-bundle by legiz (https://github.com/legiz-ru/marz-sub)"
     echo "2) template by Skrepysh (https://github.com/Skrepysh/tools/)"
-    echo "3) your template https link"
+    echo "3) re-filter template (analog antizapret)"
+    echo "4) your template https link"
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
@@ -93,6 +98,9 @@ while true; do
         mihomourl="https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/clash-sub.yml"
         break
     elif [ "$choice" -eq 3 ]; then
+        mihomourl="https://github.com/cortez24rus/marz-sub/raw/main/clash/refilter.yml"
+        break
+    elif [ "$choice" -eq 4 ]; then
         read -p "Введите URL для загрузки: " custom_url
         if [[ "$custom_url" =~ ^https?:// ]]; then
             mihomourl="$custom_url"
@@ -112,7 +120,8 @@ while true; do
     echo "Выберите шаблон sing-box для скачивания:"
     echo "1) Secret-Sing-Box template by BLUEBL0B"
     echo "2) template by Skrepysh (https://github.com/Skrepysh/tools/)"
-    echo "3) your template https link"
+    echo "3) re-filter template (analog antizapret)"
+    echo "4) your template https link"
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
@@ -135,6 +144,9 @@ jq --arg domain "$DOMAIN" --arg server_ip "$SERVER_IP" '
         wget -O "$base_dir/singbox/default.json" "https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/sing-sub.json" || echo "Ошибка загрузки sing-sub.json"
         break
     elif [ "$choice" -eq 3 ]; then
+        wget -O "$base_dir/singbox/default.json" "https://github.com/cortez24rus/marz-sub/raw/main/singbox/refilter.json" || echo "Ошибка загрузки refilter.json"
+        break
+    elif [ "$choice" -eq 4 ]; then
         read -p "Введите URL для загрузки: " custom_url
         if [[ "$custom_url" =~ ^https?:// ]]; then
             sburl="$custom_url"
