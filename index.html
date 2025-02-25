@@ -3201,6 +3201,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             document.getElementById("android-v2rayng").href = `v2rayng://install-config?url=${fullUrl}#${subname}_Sub`;
             document.getElementById("ios-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
             document.getElementById("android-singbox").href = `sing-box://import-remote-profile?url=${fullUrl}#${subname}_Sub`;
+            document.getElementById("ios-happ").href = `happ://add/${fullUrl}`;
+            document.getElementById("android-happ").href = `happ://add/${fullUrl}`;
             document.getElementById("android-nekobox").href = `sn://subscription?url=${fullUrl}&name=${subname}_Sub`;
             document.getElementById("windows-clashverge").href = `clash://install-config?url=${fullUrl}/clash-meta&name=${subname}_Sub`;
             document.getElementById("android-clashmeta").href = `clash://install-config?url=${fullUrl}/clash-meta&name=${subname}_Sub`;
@@ -3549,6 +3551,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addsingboxPC3: "Manual",
                 addsingboxPC4: "Follow the link to use the copied configuration link according to the instructions:",
                 copySBPC: "Copy config link",
+                addHapp: "Happ",
+                addHappRouting: "When adding routing, only blocked sites will be opened",
+                addHappRoutingRoscomVPN: "Add Routing RoscomVPN",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekobox",
                 addHiddify: "Hiddify",
@@ -3644,6 +3649,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addsingboxPC4: "برای استفاده از لینک تنظیمات کپی‌شده طبق دستورالعمل‌ها، لینک را دنبال کنید:",
                 addsingboxlinux: "برای اضافه کردن تنظیمات به برنامه - دستور را از لینک بالا اجرا کنید و دستورالعمل ها را دنبال کنید.",
                 copySBPC: "کپی کردن لینک تنظیمات",
+                addHapp: "Happ",
+                addHappRouting: "هنگام افزودن مسیریابی، فقط سایت‌های مسدود شده باز خواهند شد",
+                addHappRoutingRoscomVPN: "افزودن مسیریابی RoscomVPN",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekobox",
                 addHiddify: "Hiddify",
@@ -3740,6 +3748,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addsingboxPC3: "Инструкция",
                 addsingboxPC4: "Перейдите по ссылке, чтобы воспользоваться скопированной ссылкой конфигурации согласно инструкции:",
                 copySBPC: "Скопировать ссылку конфигурации",
+                addHapp: "Happ",
+                addHappRouting: "При добавлении роутинга, будут открываться только заблокированные сайты",
+                addHappRoutingRoscomVPN: "Добавить роутинг RoscomVPN",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekobox",
                 addHiddify: "Hiddify",
@@ -4802,6 +4813,189 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div
+                                                class="text-white bg-gradient-to-r from-gray-600 via-gray-700 to-gray-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                <!-- Accordion item -->
+                                                <div x-data="{ expanded: false }">
+                                                    <h2>
+                                                        <button style="direction: ltr;" id="faqs-title-01"
+                                                            type="button"
+                                                            class="flex items-center p-4 justify-between w-full text-left font-semibold"
+                                                            @click="expanded = !expanded" :aria-expanded="expanded"
+                                                            aria-controls="faqs-text-01">
+                                                            <div
+                                                                class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
+                                                                <svg width="32" height="32" viewBox="0 0 32 32"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_20_20)">
+                                                                        <path d="M13.4,19.6l-7.9,7.9L5,30.4h6.6L13.4,19.6z" fill="white" />
+                                                                        <path d="M13.2,13.5L14.6,5l-7.9,7.9L4.2,27.4l7.9-7.9l0.2-1.2h1l4.9-4.9H13.2z" fill="white" />
+                                                                        <path d="M25.4,19.6L27.8,5l-7.9,7.9l-0.1,0.7h-0.6l-4.9,4.9h4.7l-1.5,9L25.4,19.6z" fill="white" />
+                                                                        <path d="M18.7,27.5l-0.5,2.9h6.6l1.8-10.8L18.7,27.5z" fill="white" />
+                                                                        <path d="M13.6,4.9l0.6-3.3H7.5L5.6,12.8L13.6,4.9z" fill="white" />
+                                                                        <path d="M18.8,12.8l7.9-7.9l0.6-3.3h-6.6L18.8,12.8z" fill="white" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_20_20">
+                                                                            <rect width="32" height="32"
+                                                                                fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                                <span x-text="$t('addHapp')">
+                                                                </span>
+                                                            </div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor"
+                                                                :class="{'!rotate-180': expanded}"
+                                                                class="w-6 h-6 mx-6 transform origin-center transition duration-200 ease-out">
+                                                                <path strokeLinecap="round" strokeLinejoin="round"
+                                                                    d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                                            </svg>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="faqs-text-01" role="region"
+                                                        aria-labelledby="faqs-title-01"
+                                                        class="grid text-sm text-white overflow-hidden transition-all duration-300 ease-in-out"
+                                                        :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                                        <div class="overflow-hidden">
+                                                            <div class="p-4 pb-6">
+                                                                <div class="flex flex-col">
+                                                                    <div class="flex items-center gap-x-2">
+                                                                        <span x-text="$t('needediOS')"></span>
+                                                                        <div
+                                                                            class="flex items-center rtl:flex-row-reverse rtl:justify-end gap-x-1">
+                                                                            <svg width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                                <g clip-path="url(#clip0_23_24)">
+                                                                                    <path fill-rule="evenodd"
+                                                                                        clip-rule="evenodd"
+                                                                                        d="M4.36364 0C3.20633 0 2.09642 0.459739 1.27808 1.27808C0.459739 2.09642 0 3.20633 0 4.36364V19.6364C0 20.7937 0.459739 21.9036 1.27808 22.7219C2.09642 23.5403 3.20633 24 4.36364 24H19.6364C20.7937 24 21.9036 23.5403 22.7219 22.7219C23.5403 21.9036 24 20.7937 24 19.6364V4.36364C24 3.20633 23.5403 2.09642 22.7219 1.27808C21.9036 0.459739 20.7937 0 19.6364 0H4.36364ZM3.81818 8.82109C3.81818 8.53176 3.93312 8.25429 4.1377 8.0497C4.34229 7.84512 4.61976 7.73018 4.90909 7.73018C5.19842 7.73018 5.47589 7.84512 5.68048 8.0497C5.88507 8.25429 6 8.53176 6 8.82109C6 9.11042 5.88507 9.3879 5.68048 9.59248C5.47589 9.79707 5.19842 9.912 4.90909 9.912C4.61976 9.912 4.34229 9.79707 4.1377 9.59248C3.93312 9.3879 3.81818 9.11042 3.81818 8.82109ZM14.4545 10.9091C14.4545 9.912 15.3665 8.45455 17.4545 8.45455C18.2564 8.45455 18.9818 8.844 19.4782 9.25745C19.7345 9.47127 19.9604 9.71564 20.1295 9.96982C20.2833 10.2 20.4545 10.5338 20.4545 10.9091H18.8182C18.8182 10.9495 18.8236 10.9735 18.8247 10.9789C18.8095 10.9432 18.7905 10.9092 18.768 10.8775C18.6726 10.7416 18.5588 10.6197 18.4298 10.5153C18.1091 10.2469 17.7425 10.0909 17.4545 10.0909C16.2753 10.0909 16.0931 10.8087 16.0909 10.908C16.0876 10.9036 16.0887 10.908 16.0909 10.9091V10.908C16.1567 10.9741 16.2344 11.027 16.32 11.064C16.632 11.22 17.0793 11.3356 17.6531 11.4785L17.7022 11.4916C18.2105 11.6182 18.8302 11.7731 19.32 12.0185C19.8349 12.276 20.4545 12.7636 20.4545 13.6364C20.4545 14.6335 19.5425 16.0909 17.4545 16.0909C15.3665 16.0909 14.4545 14.6335 14.4545 13.6364H16.0909C16.0909 13.7302 16.2698 14.4545 17.4545 14.4545C18.6338 14.4545 18.816 13.7367 18.8182 13.6375C18.8215 13.6418 18.8204 13.6375 18.8182 13.6364V13.6375C18.7524 13.5714 18.6747 13.5184 18.5891 13.4815C18.2771 13.3255 17.8298 13.2098 17.256 13.0669L17.2069 13.0538C16.6985 12.9273 16.0789 12.7724 15.5891 12.5269C15.0742 12.2695 14.4545 11.7818 14.4545 10.9091ZM8.45455 12.2727C8.45455 10.9931 9.38182 10.0909 10.3636 10.0909C11.3455 10.0909 12.2727 10.9931 12.2727 12.2727C12.2727 13.5524 11.3455 14.4545 10.3636 14.4545C9.38182 14.4545 8.45455 13.5524 8.45455 12.2727ZM10.3636 8.45455C8.33455 8.45455 6.81818 10.2393 6.81818 12.2727C6.81818 14.3062 8.33455 16.0909 10.3636 16.0909C12.3927 16.0909 13.9091 14.3062 13.9091 12.2727C13.9091 10.2393 12.3927 8.45455 10.3636 8.45455ZM4.09091 16.0909V10.3636H5.72727V16.0909H4.09091Z"
+                                                                                        fill="white" />
+                                                                                </g>
+                                                                                <defs>
+                                                                                    <clipPath id="clip0_23_24">
+                                                                                        <rect width="24" height="24"
+                                                                                            fill="white" />
+                                                                                    </clipPath>
+                                                                                </defs>
+                                                                            </svg>
+                                                                            <span class="text-sm">15+</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                        <lord-icon
+                                                                            src="https://cdn.lordicon.com/mtdulhdc.json"
+                                                                            trigger="hover"
+                                                                            colors="primary:#fff,secondary:#fff"
+                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                        </lord-icon>
+                                                                        <h3 x-text="$t('downloadApp')"
+                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                        </h3>
+                                                                    </div>
+                                                                    <p x-text="$t('clickForDownload')"
+                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                    </p>
+                                                                    <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215"
+                                                                        class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/albqovim.json"
+                                                                            trigger="loop" delay="1500"
+                                                                            colors="primary:#fff" state="intro">
+                                                                        </lord-icon>
+                                                                        <span x-text="$t('download')"></span>
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/albqovim.json"
+                                                                            trigger="loop" delay="1500"
+                                                                            colors="primary:#fff" state="intro">
+                                                                        </lord-icon>
+                                                                    </a>
+                                                                    <div
+                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                        <lord-icon
+                                                                            src="https://cdn.lordicon.com/vcoyflbj.json"
+                                                                            trigger="hover"
+                                                                            colors="primary:#fff,secondary:#fff"
+                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                        </lord-icon>
+                                                                        <h3 x-text="$t('addConfigs')"
+                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                        </h3>
+                                                                    </div>
+                                                                    <p x-text="$t('clickForAdd')"
+                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                    </p>
+                                                                    <a id="ios-happ"
+                                                                    class="flex mb-4 items-center gap-x-4 w-full bg-stone-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                    <span x-text="$t('AddtoApp')"></span>
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                </a>
+                                                                    <div
+                                                                    class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                    <lord-icon
+                                                                        src="https://cdn.lordicon.com/igpsgesd.json"
+                                                                        trigger="hover"
+                                                                        colors="primary:#fff,secondary:#fff"
+                                                                        class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                    </lord-icon>
+                                                                    <h3 x-text="$t('routingTitle')"
+                                                                        class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                    </h3>
+                                                                </div>
+                                                                    <p x-text="$t('addHappRouting')"
+                                                                    class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                </p>
+                                                                <a href="https://routing.vpn.ru.com/"
+                                                                    class="flex mb-4 items-center gap-x-4 w-full shadow-md px-3 py-2 bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-700 transition-all duration-300 justify-between rounded-2xl">
+                                                                    <div class="rounded-xl overflow-hidden">
+                                                                        <svg width="37" height="25"
+                                                                            viewBox="0 0 37 25" fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <g clip-path="url(#clip0_106_7)">
+                                                                                <path
+                                                                                    d="M37 8.33325H0V16.6666H37V8.33325Z"
+                                                                                    fill="#0039A6" />
+                                                                                <path d="M37 0H0V8.33333H37V0Z"
+                                                                                    fill="white" />
+                                                                                <path
+                                                                                    d="M37 16.6667H0V25.0001H37V16.6667Z"
+                                                                                    fill="#D52B1E" />
+                                                                            </g>
+                                                                            <defs>
+                                                                                <clipPath id="clip0_106_7">
+                                                                                    <rect width="37" height="25"
+                                                                                        fill="white" />
+                                                                                </clipPath>
+                                                                            </defs>
+                                                                        </svg>
+
+                                                                    </div>
+                                                                    <span x-text="$t('addHappRoutingRoscomVPN')"></span>
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 <div
                                                     class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
@@ -6131,6 +6325,166 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div
+                                                class="text-white bg-gradient-to-r from-gray-600 via-gray-700 to-gray-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
+                                                <!-- Accordion item -->
+                                                <div x-data="{ expanded: false }">
+                                                    <h2>
+                                                        <button style="direction: ltr;" id="faqs-title-01"
+                                                            type="button"
+                                                            class="flex items-center p-4 justify-between w-full text-left font-semibold"
+                                                            @click="expanded = !expanded" :aria-expanded="expanded"
+                                                            aria-controls="faqs-text-01">
+                                                            <div
+                                                                class="flex items-center justify-start gap-x-2 text-lg sm:text-xl font-medium">
+                                                                <svg width="32" height="32" viewBox="0 0 32 32"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_20_20)">
+                                                                        <path d="M13.4,19.6l-7.9,7.9L5,30.4h6.6L13.4,19.6z" fill="white" />
+                                                                        <path d="M13.2,13.5L14.6,5l-7.9,7.9L4.2,27.4l7.9-7.9l0.2-1.2h1l4.9-4.9H13.2z" fill="white" />
+                                                                        <path d="M25.4,19.6L27.8,5l-7.9,7.9l-0.1,0.7h-0.6l-4.9,4.9h4.7l-1.5,9L25.4,19.6z" fill="white" />
+                                                                        <path d="M18.7,27.5l-0.5,2.9h6.6l1.8-10.8L18.7,27.5z" fill="white" />
+                                                                        <path d="M13.6,4.9l0.6-3.3H7.5L5.6,12.8L13.6,4.9z" fill="white" />
+                                                                        <path d="M18.8,12.8l7.9-7.9l0.6-3.3h-6.6L18.8,12.8z" fill="white" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_20_20">
+                                                                            <rect width="32" height="32"
+                                                                                fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                                <span x-text="$t('addHapp')">
+                                                                </span>
+                                                            </div>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor"
+                                                                :class="{'!rotate-180': expanded}"
+                                                                class="w-6 h-6 mx-6 transform origin-center transition duration-200 ease-out">
+                                                                <path strokeLinecap="round" strokeLinejoin="round"
+                                                                    d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                                            </svg>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="faqs-text-01" role="region"
+                                                        aria-labelledby="faqs-title-01"
+                                                        class="grid text-sm text-white overflow-hidden transition-all duration-300 ease-in-out"
+                                                        :class="expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                                                        <div class="overflow-hidden">
+                                                            <div class="p-4 pb-6">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                        <lord-icon
+                                                                            src="https://cdn.lordicon.com/mtdulhdc.json"
+                                                                            trigger="hover"
+                                                                            colors="primary:#fff,secondary:#fff"
+                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                        </lord-icon>
+                                                                        <h3 x-text="$t('downloadApp')"
+                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                        </h3>
+                                                                    </div>
+                                                                    <p x-text="$t('clickForDownload')"
+                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                    </p>
+                                                                    <a href="https://play.google.com/store/apps/details?id=com.happproxy"
+                                                                        class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/albqovim.json"
+                                                                            trigger="loop" delay="1500"
+                                                                            colors="primary:#fff" state="intro">
+                                                                        </lord-icon>
+                                                                        <span x-text="$t('download')"></span>
+                                                                        <lord-icon class="w-8 h-8"
+                                                                            src="https://cdn.lordicon.com/albqovim.json"
+                                                                            trigger="loop" delay="1500"
+                                                                            colors="primary:#fff" state="intro">
+                                                                        </lord-icon>
+                                                                    </a>
+                                                                    <div
+                                                                        class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                        <lord-icon
+                                                                            src="https://cdn.lordicon.com/vcoyflbj.json"
+                                                                            trigger="hover"
+                                                                            colors="primary:#fff,secondary:#fff"
+                                                                            class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                        </lord-icon>
+                                                                        <h3 x-text="$t('addConfigs')"
+                                                                            class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                        </h3>
+                                                                    </div>
+                                                                    <p x-text="$t('clickForAdd')"
+                                                                        class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                    </p>
+                                                                    <a id="android-happ"
+                                                                    class="flex mb-4 items-center gap-x-4 w-full bg-stone-800 shadow-md px-3 py-2 rounded-3xl justify-between">
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                    <span x-text="$t('AddtoApp')"></span>
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                </a>
+                                                                    <div
+                                                                    class="flex items-center rtl:mr-[-10px] ltr:ml-[-10px] md:rtl:mr-[-20px] md:ltr:ml-[-20px]">
+                                                                    <lord-icon
+                                                                        src="https://cdn.lordicon.com/igpsgesd.json"
+                                                                        trigger="hover"
+                                                                        colors="primary:#fff,secondary:#fff"
+                                                                        class="w-12 h-12 md:w-20 md:h-20 ">
+                                                                    </lord-icon>
+                                                                    <h3 x-text="$t('routingTitle')"
+                                                                        class="text-xl font-black leading-none tracking-tight text-white md:text-2xl">
+                                                                    </h3>
+                                                                </div>
+                                                                    <p x-text="$t('addHappRouting')"
+                                                                    class="text-sm mb-4 font-normal text-white lg:text-base">
+                                                                </p>
+                                                                <a href="https://routing.vpn.ru.com/"
+                                                                    class="flex mb-4 items-center gap-x-4 w-full shadow-md px-3 py-2 bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-700 transition-all duration-300 justify-between rounded-2xl">
+                                                                    <div class="rounded-xl overflow-hidden">
+                                                                        <svg width="37" height="25"
+                                                                            viewBox="0 0 37 25" fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <g clip-path="url(#clip0_106_7)">
+                                                                                <path
+                                                                                    d="M37 8.33325H0V16.6666H37V8.33325Z"
+                                                                                    fill="#0039A6" />
+                                                                                <path d="M37 0H0V8.33333H37V0Z"
+                                                                                    fill="white" />
+                                                                                <path
+                                                                                    d="M37 16.6667H0V25.0001H37V16.6667Z"
+                                                                                    fill="#D52B1E" />
+                                                                            </g>
+                                                                            <defs>
+                                                                                <clipPath id="clip0_106_7">
+                                                                                    <rect width="37" height="25"
+                                                                                        fill="white" />
+                                                                                </clipPath>
+                                                                            </defs>
+                                                                        </svg>
+
+                                                                    </div>
+                                                                    <span x-text="$t('addHappRoutingRoscomVPN')"></span>
+                                                                    <lord-icon class="w-8 h-8"
+                                                                        src="https://cdn.lordicon.com/mrdiiocb.json"
+                                                                        trigger="loop" delay="2000"
+                                                                        colors="primary:#fff">
+                                                                    </lord-icon>
+                                                                </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 <div
                                                     class="text-white bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-all duration-300 font-medium rounded-2xl">
                                                     <!-- Accordion item -->
