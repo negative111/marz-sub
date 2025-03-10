@@ -44,7 +44,7 @@ A simple html template to better display user information
 # Installation Steps
 1. Run script
 ```sh
-bash <(curl -Ls https://github.com/cortez24rus/marz-sub/raw/main/marz-sub.sh)
+bash <(curl -Ls https://github.com/negative111/marz-sub/raw/main/marz-sub.sh)
 ```
 
 2. Restart Marzban
