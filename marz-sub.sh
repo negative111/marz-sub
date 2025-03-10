@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Определение путей к директориям
-base_dir="/var/lib/marzban/templates"
+base_dir="/opt/xray-vps-setup/marzban_lib/templates"
 declare -a dirs=("singbox" "v2ray" "clash" "subscription")
 
 # Создание директорий, если они не существуют
@@ -128,7 +128,7 @@ while true; do
         wget -O "$base_dir/singbox/default.json" "https://github.com/cortez24rus/marz-sub/raw/main/singbox/ssb.json" || echo "Ошибка загрузки ssb.json"
         # Получение переменных DOMAIN и SERVER-IP
         sleep 1
-        DOMAIN=$(grep "XRAY_SUBSCRIPTION_URL_PREFIX" /opt/marzban/.env | cut -d '"' -f 2 | sed 's|https://||')
+        DOMAIN=$(grep "XRAY_SUBSCRIPTION_URL_PREFIX" /opt/xray-vps-setup/marzban/.env | cut -d '"' -f 2 | sed 's|https://||')
         sleep 1
         SERVER_IP=$(wget -qO- https://ipinfo.io/ip)
         sleep 1
@@ -161,7 +161,7 @@ jq --arg domain "$DOMAIN" --arg server_ip "$SERVER_IP" '
 done
 
 # Обновление или добавление настроек в .env файл
-env_file="/opt/marzban/.env"
+env_file="/opt/xray-vps-setup/marzban/.env"
 
 update_or_add() {
     local key="$1"
