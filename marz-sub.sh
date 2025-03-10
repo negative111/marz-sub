@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Определение путей к директориям
-base_dir="/opt/xray-vps-setup/marzban_lib/templates"
+base_dir="/opt/xray-vps-setup/marzban/templates"
 declare -a dirs=("singbox" "v2ray" "clash" "subscription")
 
 # Создание директорий, если они не существуют
