@@ -3491,7 +3491,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
         const dataUsage = dataLimit == "∞" ? 100 : tmpUsage;
         const dataChartColor = dataUsage < 40 ? "bg-green-500" : dataUsage < 80 ? "bg-yellow-600" : "bg-red-500";
         const resetInterval = "{{ user.data_limit_reset_strategy.value }}";
-        let expireDateVar = expireDateInit.includes("∞") ? "∞" : localStorage.getItem("lang") == "fa" ? new Date(expireDateInit).toLocaleString("fa-IR-u-nu-latn").replace(",", " ") : expireDateInit;
+        let expireDateVar = expireDateInit.includes("∞") ? "∞" : localStorage.getItem("lang") == "ru" ? new Date(expireDateInit).toLocaleString("fa-IR-u-nu-latn").replace(",", " ") : expireDateInit;
         let langJson = {
             en: {
                 active: "Active",
@@ -3592,104 +3592,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 generalAccessInfo: "In this section, you have access to your configs separately which allows you to share each of them through QR Code or you can simply copy them.",
                 supTelInfo: "If there are any problems with subscription, please contact support on Telegram."
             },
-            fa: {
-                active: "فعال",
-                limited: "تمام شده",
-                expired: "پایان یافته",
-                disabled: "غیرفعال",
-                dataUsage: "میزان استفاده: ",
-                expirationDate: "تاریخ پایان اشتراک: ",
-                resetIntervalDay: "(ریست روزانه)",
-                resetIntervalWeek: "(ریست هفتگی)",
-                resetIntervalMonth: "(ریست ماهانه)",
-                resetIntervalYear: "(ریست سالانه)",
-                remainingDays: "روزهای باقی‌مانده: ",
-                remainingDaysSufix: " روز",
-                links: "لینک‌ها",
-                apps: "دانلود برنامه‌ها",
-                Android: "اندروید",
-                iOS: "آی او اِس",
-                Windows: "ویندوز",
-                macOS: "مک او اِس",
-                Linux: "لینوکس",
-                tutorials: "آموزش‌ها",
-                subscription: "لینک اشتراک",
-                language: "زبان",
-                settings: "تنظیمات",
-                darkMode: "تم تیره",
-                copyAll: "کپی همه",
-                proxy: "پروکسی",
-                tutorial: "آموزش",
-                download: "دانلود",
-                downloadClashVergeRev: "Clash Verge Rev",
-                downloadClashNyanpasu: "Clash Nyanpasu",
-                downloadFlClash: "FlClash",
-                downloadGP: "Google Play",
-                downloadAPK: "دانلود APK",
-                telchannel: "کانال تلگرام",
-                telProxy: "پروکسی تلگرام",
-                telsupport: "پشتیبانی تلگرام",
-                v2rayNG: "اندروید - دانلود برنامه v2rayNG",
-                NekoBox: "اندروید - دانلود برنامه NekoBox",
-                NekoBoxGPAlert: "Google Play 上的版本是冒充的，请勿下载。",
-                SingBox: "اندروید - دانلود برنامه Sing-Box",
-                Streisand: "آی او اِس - دانلود برنامه Streisand",
-                FoXray: "آی او اِس - دانلود برنامه FoXray",
-                v2RayTun: "آی او اِس - دانلود برنامه v2RayTun",
-                addto: "نصب با یک کلیک",
-                addV2rayNG: "v2rayNG",
-                addStreisand: "Streisand",
-                addFoXray: "FoXray",
-                addNekoBox: "NekoBox",
-                addv2RayTun: "v2RayTun",
-                addShadowrocket: "Shadowrocket",
-                addsingboxPC: "کپی کردن لینک",
-                addsingboxPC2: "برای مراجعه آینده، لینک تنظیمات را از طریق لینک زیر کپی کنید",
-                addsingboxPC3: "دستی",
-                addsingboxPC4: "برای استفاده از لینک تنظیمات کپی‌شده طبق دستورالعمل‌ها، لینک را دنبال کنید:",
-                addsingboxlinux: "برای اضافه کردن تنظیمات به برنامه - دستور را از لینک بالا اجرا کنید و دستورالعمل ها را دنبال کنید.",
-                copySBPC: "کپی کردن لینک تنظیمات",
-                addHapp: "Happ",
-                addHappRouting: "هنگام افزودن مسیریابی، فقط سایت‌های مسدود شده باز خواهند شد",
-                addHappRoutingRoscomVPN: "افزودن مسیریابی RoscomVPN",
-                addV2rayN: "v2rayN",
-                addnekoray: "Nekobox",
-                addHiddify: "Hiddify",
-                addClash: "Clash",
-                addClashMeta: "Clash Meta",
-                addMihomo: "Mihomo",
-                addClashX: "Clash X",
-                install: "برای دانلود برنامه مورد نظر نسبت به سیستم عامل خودتون روی لینک دانلود کلیک کنید!",
-                support: "پشتیبانی",
-                oneClick: "برای نصب سریع برنامه مورد نظر رو انتخاب کنید.",
-                restofusage: "میزان استفاده",
-                needediOS: "سیستم عامل مورد نیاز: ",
-                clickForDownload: "برای دانلود کردن برنامه روی لینک زیر کلیک کنید",
-                clickForAdd: "برای اضافه کردن کانفیگ‌ ها داخل برنامه روی لینک زیر کلیک کنید.",
-                copyLink: "کپی کردن",
-                qrCode: "کیوآرکد",
-                downloadApp: "دانلود برنامه",
-                addConfigs: "افزودن کانفیگ ها",
-                AddtoApp: "افزودن به برنامه",
-                myConfigs: "کانفیگ های من",
-                copyAllCfgs: "کپی کردن همه کانفیگ ها",
-                copied: "کپی شد",
-                clickOutClose: "برای بسته شدن بیرون از باکس کلیک کنید",
-                chooseApp: "برنامه مورد نظر خود را انتخاب کنید",
-                routingTitle: "مسیریابی - پیشنهادی",
-                routingInfo: "با اضافه کردن مسیریابی, وب سایت ها و برنامه های داخلی از VPN عبور داده نمیشود",
-                routingIR: "افزودن سرویس ایران",
-                routingRU: "افزودن سرویس روسیه",
-                myiOS: "سیستم عامل من",
-                v2rayNGs3: "بروزرسانی اشتراک",
-                v2rayNGs3Info: "پس از مرحله دوم، باید یک بار اشتراک خود را به روز کنید. دو تصویر شما را راهنمایی می کند.",
-                howToConnect: "چطوری وصل بشم؟",
-                connectInfo: "با استفاده از منو های زیر نسبت به سیستم عامل خود می توانید از اشتراک خود استفاده کنید.",
-                macInfo: "نکته: اتصال در مک مشابه آی او اِس است",
-                generalAccess: "دسترسی کلی",
-                generalAccessInfo: "در این بخش، شما به کانفیگ های خود به طور جداگانه دسترسی دارید که به شما امکان می دهد هر یک از آنها را از طریق کد QR به اشتراک بگذارید یا می توانید به سادگی آنها را کپی کنید.",
-                supTelInfo: "در صورت وجود هرگونه مشکل در اشتراک, با پشیتبانی تلگرام در ارتباط باشید."
-            },
             ru: {
                 active: "Активен",
                 limited: "Ограничен",
@@ -3719,7 +3621,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 proxy: "прокси",
                 tutorial: "руководство",
                 download: "Скачать",
-                downloadClashVergeRev: "Clash Verge Rev",
+                downloadClashVergeRev: "Clash Verge Rev (рекомендую)",
                 downloadClashNyanpasu: "Clash Nyanpasu",
                 downloadFlClash: "FlClash",
                 downloadGP: "Google Play",
@@ -3749,7 +3651,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 addsingboxPC4: "Перейдите по ссылке, чтобы воспользоваться скопированной ссылкой конфигурации согласно инструкции:",
                 copySBPC: "Скопировать ссылку конфигурации",
                 addHapp: "Happ",
-                addHappRouting: "При добавлении роутинга, будут открываться только заблокированные сайты",
+                addHappRouting: "При добавлении роутинга, сайты внутри страны будут открываться без VPN, а также с ним меньше рекламы",
                 addHappRoutingRoscomVPN: "Добавить роутинг RoscomVPN",
                 addV2rayN: "v2rayN",
                 addnekoray: "Nekobox",
@@ -3775,15 +3677,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 copied: "Скопировано",
                 clickOutClose: "Нажмите за пределами окна, чтобы закрыть.",
                 chooseApp: "Выберите нужную вам программу",
-                routingTitle: "Роутинг — рекоммендуется",
+                routingTitle: "Роутинг — рекомендуется",
                 routingInfo: "При добавлении роутинга, сайты внутри страны будут открываться без VPN",
                 routingIR: "Добавить Иранские сайты",
                 routingRU: "Добавить Российские сайты",
                 myiOS: 'Моя версия IOS: ',
                 v2rayNGs3: "Обновите подписку",
                 v2rayNGs3Info: "После второго шага необходимо один раз обновить подписку. Ниже приведены два изображения, которые помогут вам в этом.",
-                howToConnect: "Как подключиться?",
-                connectInfo: "Воспользоваться подпиской можно через следующее меню для нужной операционной системы",
+                howToConnect: "?Как подключиться",
+                connectInfo: "Воспользоваться подпиской можно через следующее меню для нужной операционной системы. Рекомендуемые приложения отмечены звездочкой. Важно: на ПК необходимо запускать программу от имени администратора и включить в настройках режим TUN",
                 macInfo: "Примечание: подключение на Mac OS аналогично IOS",
                 generalAccess: "Общий доступ",
                 generalAccessInfo: "В этом разделе вы получаете доступ к своим конфигурациям по отдельности, что позволяет делиться каждой из них с помощью QR-кода или просто копировать их.",
@@ -3791,15 +3693,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             },
         };
         let settings = {
-            language: "fa",
+            language: "ru",
         };
 
         function checkLang() {
-            window.AlpineI18n.fallbackLocale = "fa";
+            window.AlpineI18n.fallbackLocale = "ru";
             let locale = localStorage.getItem("lang") ?? settings.language;
             window.AlpineI18n.create(locale, langJson);
             AlpineI18n.locale = locale;
-            document.body.setAttribute("dir", locale == "fa" ? "rtl" : "ltr");
+            document.body.setAttribute("dir", locale == "ru" ? "rtl" : "ltr");
         }
 
         document.addEventListener("alpine-i18n:ready", () => {
@@ -4695,19 +4597,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
-                                                                    <div
-                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
-
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24 24" fill="currentColor"
-                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                                            clip-rule="evenodd" />
-                                                                    </svg>
-
-
-                                                                </div>
+                                                                    
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -4844,6 +4734,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                 </svg>
                                                                 <span x-text="$t('addHapp')">
                                                                 </span>
+                                                                <div
+                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor"
+                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                            clip-rule="evenodd" />
+                                                                    </svg>
+
+
+                                                                </div>
                                                             </div>
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -5631,19 +5534,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         class="flex items-center justify-start gap-x-2">
                                                                         <span x-text="$t('addV2rayNG')">
                                                                         </span>
-                                                                        <div
-                                                                            class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
 
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" fill="currentColor"
-                                                                                class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
-                                                                                <path fill-rule="evenodd"
-                                                                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                                                    clip-rule="evenodd" />
-                                                                            </svg>
-
-
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -6097,19 +5988,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addsingbox')">
                                                                     </span>
-                                                                    <div
-                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
 
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24 24" fill="currentColor"
-                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                                            clip-rule="evenodd" />
-                                                                    </svg>
-
-
-                                                                </div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -6230,19 +6109,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
                                                                     <span x-text="$t('addClashMeta')">
                                                                     </span>
-                                                                    <div
-                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
-
-                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                        viewBox="0 0 24 24" fill="currentColor"
-                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                                            clip-rule="evenodd" />
-                                                                    </svg>
-
-
-                                                                </div>
+      
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
@@ -6356,6 +6223,19 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                 </svg>
                                                                 <span x-text="$t('addHapp')">
                                                                 </span>
+                                                                <div
+                                                                    class="bg-gray-100 pb-1.5 px-2 pt-1 rounded-full">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24" fill="currentColor"
+                                                                        class="w-6 h-6 fill-yellow-500 stroke-yellow-500">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                                                            clip-rule="evenodd" />
+                                                                    </svg>
+
+
+                                                                </div>
                                                             </div>
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -6791,7 +6671,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                         <g transform="translate(0.000000,170.000000) scale(0.100000,-0.100000)"
                                                                             fill="#FFF" stroke="none">
                                                                             <path
-                                                                                d="M230 1385 l0 -75 75 0 75 0 2 -549 3 -549 580 616 c319 338 582 619 583 624 2 4 -86 8 -195 8 l-198 0 -275 -257 -275 -256 -5 254 -5 254 -182 3 -183 2 0 -75z" />
+                                                                                d="M2 -549 580 616 c319 338 582 619 583 624 2 4 -86 8 -195 8 l-198 0 -275 -257 -275 -256 -5 254 -5 254 -182 3 -183 2 0 -75z" />
                                                                         </g>
                                                                     </svg>
                                                                     <span x-text="$t('addV2rayN')">
@@ -6913,7 +6793,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                                                                     <p x-text="$t('clickForDownload')"
                                                                         class="text-sm mb-4 font-normal text-white lg:text-base">
                                                                     </p>
-                                                                    <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.0.3/Clash.Verge_2.0.3_x64-setup.exe"
+                                                                    <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.1.2/Clash.Verge_2.1.2_x64-setup.exe"
                                                                         class="flex mb-4 items-center gap-x-4 w-full bg-gray-800 shadow-md px-3 py-2 rounded-3xl justify-between">
                                                                         <lord-icon class="w-8 h-8"
                                                                             src="https://cdn.lordicon.com/albqovim.json"
@@ -8131,7 +8011,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     <p x-text="$t('supTelInfo')" class="text-lg font-normal mb-4 text-gray-300 lg:text-xl"></p>
                     <div class="flex flex-col gap-y-4">
                         <h2 class="font-bold text-white text-2xl mb-2" x-text="$t('sup')"></h2>
-                        <a href="https://t.me/yourID"
+                        <a href="https://t.me/xwentan/"
                             class="py-3 px-4 transition-all duration-200 inline-flex gap-x-3 justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="w-6 h-6 fill-white"
                                 viewBox="0 0 50 50">
@@ -8159,7 +8039,6 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                             class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-3.5 bg-gray-100 border-gray-200 placeholder-gray-800 text-black dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
                             <option value="ru">Русский</option>
                             <option value="en">English</option>
-                            <option value="fa">فارسی</option>
                         </select>
                     </div>
                 </div>
