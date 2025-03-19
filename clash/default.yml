@@ -75,34 +75,34 @@ rule-providers:
     url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/ru-bundle/rule.mrs
     path: ./ru-bundle/rule.mrs
     interval: 86400
-  #refilter_domains:
-    #type: http
-    #behavior: domain
-    #format: mrs
-    #url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/re-filter/domain-rule.mrs
-    #path: ./re-filter/domain-rule.mrs
-    #interval: 86400
-  #refilter_ipsum:
-    #type: http
-    #behavior: ipcidr
-    #format: mrs
-    #url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/re-filter/ip-rule.mrs
-    #path: ./re-filter/ip-rule.mrs
-    #interval: 86400
-  #oisd_big:
-    #type: http
-    #behavior: domain
-    #format: mrs
-    #url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/oisd/big.mrs
-    #path: ./oisd/big.mrs
-    #interval: 86400
-  #oisd_small:
-    #type: http
-    #behavior: domain
-    #format: mrs
-    #url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/oisd/small.mrs
-    #path: ./oisd/small.mrs
-    #interval: 86400
+  refilter_domains:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/re-filter/domain-rule.mrs
+    path: ./re-filter/domain-rule.mrs
+    interval: 86400
+  refilter_ipsum:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/re-filter/ip-rule.mrs
+    path: ./re-filter/ip-rule.mrs
+    interval: 86400
+  oisd_big:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/oisd/big.mrs
+    path: ./oisd/big.mrs
+    interval: 86400
+  oisd_small:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/oisd/small.mrs
+    path: ./oisd/small.mrs
+    interval: 86400
   #oisd_nsfw_small:
     #type: http
     #behavior: domain
@@ -118,14 +118,14 @@ rule-providers:
     #path: ./oisd/nsfw_big.mrs
     #interval: 86400
 rules:
-  # - RULE-SET,oisd_small,REJECT
-  # - RULE-SET,oisd_big,REJECT
+   - RULE-SET,oisd_small,REJECT
+   - RULE-SET,oisd_big,REJECT
   # - RULE-SET,oisd_nsfw_small,REJECT
   # - RULE-SET,oisd_nsfw_big,REJECT
-  # - PROCESS-NAME,Discord.exe,PROXY
-  # - PROCESS-NAME,com.supercell.clashofclans,PROXY
-  # - PROCESS-NAME,com.supercell.brawlstars,PROXY
+   - PROCESS-NAME,Discord.exe,PROXY
+   - PROCESS-NAME,com.supercell.clashofclans,PROXY
+   - PROCESS-NAME,com.supercell.brawlstars,PROXY
   - RULE-SET,ru-bundle,PROXY
-  # - RULE-SET,refilter_domains,PROXY
-  # - RULE-SET,refilter_ipsum,PROXY
+   - RULE-SET,refilter_domains,PROXY
+   - RULE-SET,refilter_ipsum,PROXY
   - MATCH,DIRECT
