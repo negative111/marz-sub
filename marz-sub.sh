@@ -25,7 +25,7 @@ while true; do
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
-        shablonurl="https://github.com/cortez24rus/marz-sub/raw/main/index.html"
+        shablonurl="https://raw.githubusercontent.com/negative111/marz-sub/refs/heads/main/index.html"
         wget -O "$base_dir/subscription/index.html" "$shablonurl" || echo "Ошибка загрузки index.html"
         sed -i "s#https://t.me/yourID#$tg_escaped_link#g" "$base_dir/subscription/index.html"
         break
@@ -92,7 +92,7 @@ while true; do
     read -p "Введите номер шаблона: " choice
 
     if [ "$choice" -eq 1 ]; then
-        mihomourl="https://github.com/cortez24rus/marz-sub/raw/main/clash/default.yml"
+        mihomourl="https://raw.githubusercontent.com/negative111/marz-sub/refs/heads/main/clash/default.yml"
         break
     elif [ "$choice" -eq 2 ]; then
         mihomourl="https://github.com/Skrepysh/tools/raw/main/marzban-subscription-templates/clash-sub.yml"
@@ -195,3 +195,5 @@ echo "Обновление файла .env выполнено."
 
 echo "Скрипт выполнен успешно."
 echo "Не забудь перезапустить Marzban."
+echo "Вот команда: cd /opt/xray-vps-setup && docker compose -f docker-compose.yml down && docker compose -f docker-compose.yml up -d
+"
