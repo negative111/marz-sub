@@ -118,14 +118,14 @@ rule-providers:
     #path: ./oisd/nsfw_big.mrs
     #interval: 86400
 rules:
-   - RULE-SET,oisd_small,REJECT
-   - RULE-SET,oisd_big,REJECT
+    - RULE-SET,oisd_small,REJECT
+    - RULE-SET,oisd_big,REJECT
   # - RULE-SET,oisd_nsfw_small,REJECT
   # - RULE-SET,oisd_nsfw_big,REJECT
-   - PROCESS-NAME,Discord.exe,PROXY
-   - PROCESS-NAME,com.supercell.clashofclans,PROXY
-   - PROCESS-NAME,com.supercell.brawlstars,PROXY
-  - RULE-SET,ru-bundle,PROXY
-   - RULE-SET,refilter_domains,PROXY
-   - RULE-SET,refilter_ipsum,PROXY
-  - MATCH,DIRECT
+    - PROCESS-NAME,Discord.exe,PROXY
+    - PROCESS-NAME,com.supercell.clashofclans,PROXY
+    - PROCESS-NAME,com.supercell.brawlstars,PROXY
+    - RULE-SET,ru-bundle,PROXY
+    - RULE-SET,refilter_domains,PROXY
+    - RULE-SET,refilter_ipsum,PROXY
+    - MATCH,DIRECT
